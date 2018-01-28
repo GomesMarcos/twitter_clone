@@ -8,7 +8,7 @@ class DB{
     private $usuario = 'root';
     
     //senha
-    private $senha = '123qwe';
+    private $senha = '';
         
     //banco de dados
     private $dataBase = 'twitter_clone';
