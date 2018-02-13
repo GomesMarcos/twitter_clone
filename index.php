@@ -17,30 +17,31 @@ $erro = isset($_GET['erro']) ? $_GET['erro'] : 0;
 
         <script>
             // código javascript
-            $(document).ready(function (){
-               
-               var campo_vazio = false;
-               
+            $(document).ready(function () {
+
+                var campo_vazio = false;
+
                 //Verificar se campos de usuário e senha foram devidamente preenchidos
-                $('#btn_login').click(function (){
-                   if($('#campo_usuario').val() == ''){
-                        $('#campo_usuario').css({'border-color':'#A94442'})
+                $('#btn_login').click(function () {
+                    if ($('#campo_usuario').val() == '') {
+                        $('#campo_usuario').css({'border-color': '#A94442'})
                         alert('Informe o Usuário');
                         campo_vazio = true;
-                   }else{
-                        $('#campo_usuario').css({'border-color':'#CCC'})
-                   }
-                   
-                   if($('#campo_senha').val() == ''){
-                        $('#campo_senha').css({'border-color':'#A94442'})
+                    } else {
+                        $('#campo_usuario').css({'border-color': '#CCC'})
+                    }
+
+                    if ($('#campo_senha').val() == '') {
+                        $('#campo_senha').css({'border-color': '#A94442'})
                         alert('Informe a Senha');
                         campo_vazio = true;
-                   }else{
-                        $('#campo_senha').css({'border-color':'#CCC'})
-                   }
-                   
-                   if(campo_vazio) return false;
-            
+                    } else {
+                        $('#campo_senha').css({'border-color': '#CCC'})
+                    }
+
+                    if (campo_vazio)
+                        return false;
+
                 });
             });
 
@@ -65,7 +66,7 @@ $erro = isset($_GET['erro']) ? $_GET['erro'] : 0;
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">
                         <li><a href="inscrevase.php">Inscrever-se</a></li>
-                        <li class="<?= $erro ==1? 'open' :'' ;?>">
+                        <li class="<?= $erro == !0 ? 'open' : ''; ?>">
                             <a id="entrar" data-target="#" href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Entrar</a>
                             <ul class="dropdown-menu" aria-labelledby="entrar">
                                 <div class="col-md-12">
@@ -85,9 +86,14 @@ $erro = isset($_GET['erro']) ? $_GET['erro'] : 0;
                                         <br /><br />
                                     </form>
                                     <?php
-                                    
-                                    if($erro == 1){
-                                        echo '<font color="#FF0000">Usuário ou senha <b>inválidos</b>.</font>';
+                                    switch ($erro) {
+                                        case 1:
+                                            echo '<font color="#FF0000">Usuário ou senha <b>inválidos</b>.</font>';
+                                            break;
+
+                                        case 2:
+                                            echo '<font color="#FF0000">Email já <b>cadastrado</b>.</font>';
+                                            break;
                                     }
                                     ?>
                             </ul>
